@@ -25,6 +25,9 @@ jobs:
             sed -i 's/  "version": "\(.*\)",/  "version": "\1-foo-2",/g' package.json
             echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc
             npm publish
+            git config --global user.email "devops@brainhub.pl"
+            git config --global user.name "DevOps Brainhub"
+            git add .
             git stash
       - run:
           name: npm publish
