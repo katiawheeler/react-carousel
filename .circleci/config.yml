@@ -27,15 +27,14 @@ jobs:
             sed -i 's/export default CarouselItem;/global.BrainhubeuReactCarouselItem = CarouselItem; export default CarouselItem;/g' src/components/CarouselItem.js
             sed -i 's/export default CarouselWrapper;/global.BrainhubeuReactCarouselWrapper = CarouselWrapper; export default CarouselWrapper;/g' src/components/CarouselWrapper.js
             yarn build
-            sed -i 's/  "version": "\(.*\)",/  "version": "\1-foo",/g' package.json
+            sed -i 's/  "version": "\(.*\)",/  "version": "\1-foo-2",/g' package.json
             echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc
             npm publish
-            git add
             git stash
       - run:
           name: npm publish
           command: |
-            sed -i 's/  "version": "\(.*\)",/  "version": "\1-bar",/g' package.json
+            sed -i 's/  "version": "\(.*\)",/  "version": "\1-bar-2",/g' package.json
             yarn build
             echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc
             npm publish
